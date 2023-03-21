@@ -1,0 +1,34 @@
+version: '3.9'
+
+services:
+
+    database:
+        image: postgres
+        container_name: 'sbf-db'
+        ports:
+            - '5432:5432'
+        environment:
+            - POSTGRES_USER=sbf
+            - POSTGRES_PASSWORD=sbf
+            - POSTGRES_DB=sbf
+        volumes:
+            - ./.volumes/postgres:/var/lib/postgresql
+        networks:
+            - default
+
+    api:
+        build:
+            context: .
+            dockerfile: ./infrastructure/docker/node/Dockerfile
+        container_name: 'sbf-api'
+        ports:
+            - '3000:3000'
+            - '9229:9229'
+        volumes:
+            - .:/usr/app
+        links:
+            - database
+        depends_on:
+            - database
+        networks:
+            - default

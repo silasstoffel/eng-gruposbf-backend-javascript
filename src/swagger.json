@@ -1,0 +1,85 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "sbf-challenge",
+        "description": "sbf-back RESTful API",
+        "version": "0.0.1",
+        "contact": "silasstofel@gmail.com"
+    },
+    "paths": {
+        "/api/convert/{currencyCodeFrom}/{value}": {
+            "get": {
+                "summary": "Currency converter",
+                "description": "Provides currency converter functionality",
+                "tags": ["Currency converter"],
+                "parameters": [
+                    {
+                        "name": "currencyCodeFrom",
+                        "in": "path",
+                        "description": "Currency code",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "value",
+                        "in": "path",
+                        "description": "Value",
+                        "required": true,
+                        "schema": {
+                            "type": "number"
+                        }
+                    }
+                ],
+                "requestBody": {},
+                "responses": {
+                    "200": {
+                        "description": "Conversion successful.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "code": {
+                                                "type": "string",
+                                                "description": "Currency code"
+                                            },
+                                            "value": {
+                                                "type": "number",
+                                                "description": "Value"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Conversion failed.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "code": {
+                                            "type": "string",
+                                            "description": "Code"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "description": "Message detail"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

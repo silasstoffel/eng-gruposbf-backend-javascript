@@ -1,0 +1,11 @@
+!.gitkeep
+
+node_modules
+.vscode
+.idea
+
+/dist
+.volumes
+coverage
+
+.env
