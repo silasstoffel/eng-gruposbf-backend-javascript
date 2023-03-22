@@ -19,7 +19,7 @@ services:
     api:
         build:
             context: .
-            dockerfile: ./infrastructure/docker/dev/node/Dockerfile
+            dockerfile: ./infrastructure/docker/prod/node/Dockerfile
         container_name: 'sbf-api'
         ports:
             - '3000:3000'

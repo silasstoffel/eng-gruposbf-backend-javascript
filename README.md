@@ -102,11 +102,26 @@ Caso opte seguir por esse caminho é necessário instalar estas depêndencias:
  - [Node 18.15](https://nodejs.org/en/)
  - [PostgreSQL 14+](https://www.postgresql.org/download)
 
-Para finalizar mapei
+Para finalizar certifique que .env esteja com credencias de banco de dados corretamente.
 
+```shell
+#dev mode
+npm run dev
+
+#build
+npm run build
+```
+
+**Produção**
+
+Este modo cria um ambiente para produção, rodando diretamente arquivo js já transpilado e sem dependencias de desenvolvimento.
+
+```shell
+$ docker-compose -f docker-compose.prod.yaml up --build
+```
 ## Onboarding
 
-Quando a aplicação subir por padrão ela irá criar valores para permitir a cotação:
+Quando a aplicação subir por padrão ela irá criar valores para permitir a cotação, o valores são:
 
 From       | To      | Value
 :--------- | :------ | :-------
@@ -132,9 +147,6 @@ npm run test
 # test with coverage report
 npm run test:coverage
 ```
-
-Documentação da API: [http://localhost:3000/swagger](http://localhost:3000/swagger)
-
 ## Techs
 
 Essa aplicação foi projetada seguindo alguns princípios e techs, tais como:
