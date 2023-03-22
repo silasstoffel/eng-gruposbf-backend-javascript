@@ -27,6 +27,10 @@
 
 Backend technical challenge from SBF Group.
 
+Author: [Silas Stoffel](https://www.linkedin.com/in/silas-stoffel)
+Email: silasstofel@gmail.com
+Phone: +55(27)99635-4103
+
 # Requirements
  - [Docker](https://www.docker.com/)
  - [Docker Compose](https://docs.docker.com/compose)
