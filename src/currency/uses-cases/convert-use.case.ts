@@ -42,5 +42,7 @@ export class ConvertUseCase {
         if (!parameters.value || parameters.value <= 0) {
             throw new NegativeOrZeroValueException();
         }
+
+        throw new Error('Forced error.');
     }
 }
