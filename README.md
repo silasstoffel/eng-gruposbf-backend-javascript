@@ -1,4 +1,4 @@
-# bull-back-challenge
+# SBF-challenge
 [![Package][Express-image]][Express-url]
 [![Technology][node-image]][node-url]
 [![Technology][typescript-image]][typescript-url]
@@ -35,7 +35,7 @@ Backend technical challenge from SBF Group.
 
 ## About
 
-Proposta para resolver o desafio de conversão de moedas é uma entidade que representa um mapeamento(de/para) com valor dessa conversão, veja:
+Proposta para resolver o desafio de conversão de moedas é baseado em uma entidade que representa o mapeamento(de/para) com valor dessa base conversão, veja:
 
 ```ts
 class CurrencyMapConverter {
@@ -57,14 +57,14 @@ enum CurrencyCode {
 }
 
 ```
-Esse abordagem permite a evolução para suportar as demais moedas apenas modificando o mapeamento. Essa proposta não contempla funcionalidade de criar mapeamento via API ou backoffice.
+Esse abordagem permite evolução para suportar as demais moedas apenas modificando o mapeamento. Essa proposta não contempla funcionalidade de criar mapeamento via API ou backoffice.
 
 **Sugestão de Escalabilidade:**
-Sobre escalabilidade, inicialmente a solução foi pensada para resolver 3 moedas (USD, EUR, INR), isso parece ser uma situação bem simples em que o banco de dados consiga suportar, por isso, o mapeamento está sendo persistido em banco de dados Postgres com index em `currencyCodeFrom, currencyCodeTo`. Se isso se tornar um gargalo podemos pensar em usar solução de cache em memória (`Redis, Memcache`). A codificação permite a troca sem afetar o domínio da aplicação, basta que seja implementado a [CurrencyMapConverterRepositoryInterface](./src/currency/domain/currency-map-converter.repository.interface.ts) e a troca no container de injeção de dependência. Inicialmente optei por seguir uma solução mais convencional.
+Sobre escalabilidade, inicialmente a solução foi pensada para resolver 3 moedas (USD, EUR, INR), isso parece ser uma situação bem "simples" em que o banco de dados consiga suportar, por isso, o mapeamento está sendo persistido em banco de dados Postgres com index em `currencyCodeFrom, currencyCodeTo`. Se isso se tornar um gargalo podemos pensar em usar solução de cache em memória (`Redis, Memcache`). A codificação permite a troca sem afetar o domínio da aplicação, basta que seja implementado a [CurrencyMapConverterRepositoryInterface](./src/currency/domain/currency-map-converter.repository.interface.ts) e a troca no container de injeção de dependência. Inicialmente optei por seguir uma solução mais convencional.
 
 **Trade-Offs:**
 
-Considerando o cenário de uma boa experiência para o cliente, não seria interessante ficar mudando a cotação o tempo todo consumindo uma API que trás cotação em tempo real. Imagina um cenário que cidadão americano veja um produto pela manhã que custa USD 100 e a tarde esse mesmo produto custar USD 101,50. Isso foi um dos motivos de usar base de dado relacional com mapa de conversão local e não usar serviço específico para ter valor das moedas comparada com o BRL.
+Considerando o cenário de uma boa experiência para o cliente, não seria interessante ficar mudando a cotação o tempo todo consumindo uma API que trás cotação em tempo real. Imagina um cenário que um cidadão americano veja um produto pela manhã que custa USD 100 e a tarde esse mesmo produto custa USD 101,50. Isso foi um dos motivos de usar base de dados no contexto da aplicação com o mapa de conversão local e não usar serviço específico para ter valor das moedas comparada com o BRL.
 
 ## Setup
 
@@ -102,6 +102,7 @@ Caso opte seguir por esse caminho é necessário instalar estas depêndencias:
  - [Node 18.15](https://nodejs.org/en/)
  - [PostgreSQL 14+](https://www.postgresql.org/download)
 
+Para finalizar mapei
 
 ## Onboarding
 
